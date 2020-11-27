@@ -1,0 +1,4 @@
+[web]
+127.0.0.1 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+[database]
+192.168.1.53 ansible_ssh_user=root ansible_ssh_pass=369874125
