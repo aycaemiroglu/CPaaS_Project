@@ -1,11 +1,11 @@
 server {
-       listen       80 {{ project_domain }};
-       listen       [::]:80 {{ project_domain }};
+       listen       80;
+       listen       [::]:80;
        server_name  _;
        root         /usr/share/nginx/html;
    
        # Load configuration files for the default server block.
-       include /etc/nginx/*.conf;
+       #include /etc/nginx/*.conf;
 
        location / {
        }

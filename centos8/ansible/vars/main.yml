@@ -1,5 +1,11 @@
 ---
     # Nginx
-    project_domain: 0x656e.com
+    #project_domain: localhost
     nginx_group: webapps
-    nginx_user: vagrant
+    nginx_user: sysadm
+    
+    #
+    console_user: ansible_user
+    shmmax_percent: 50
+    shmall_percent: 50
+    default_groups: web-admin
