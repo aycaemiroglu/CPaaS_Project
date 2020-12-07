@@ -3,11 +3,21 @@
       "version": ""
     },
     "provisioners": [
-      	{
-      	 "type":            "ansible",
-     	   "playbook_file":   "./ansible/webplaybook.yml"
-      	}  
-      ]
+      {
+        "type": "shell",
+        "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "script": "scripts/ansible.sh"
+      },
+      {
+        "type": "ansible-local",
+        "playbook_file": "../shared/main.yml",
+        "galaxy_file": "../shared/requirements.yml"
+      },
+      {
+        "type": "shell",
+        "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "script": "scripts/cleanup.sh"
+      }
     ],
     "builders": [
       {
@@ -33,7 +43,20 @@
         "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
         "virtualbox_version_file": ".vbox_version",
         "vm_name": "packer-centos-8-x86_64",
-        "vboxmanage": [ ]
+        "vboxmanage": [
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--memory",
+            "2048"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--cpus",
+            "1"
+          ]
+        ]
       }
     ],
     "post-processors": [
@@ -41,6 +64,12 @@
         {
           "output": "builds/{{.Provider}}-centos8.box",
           "type": "vagrant"
-        }      ]
+        },
+        {
+          "type": "vagrant-cloud",
+          "box_tag": "geerlingguy/centos8",
+          "version": "{{user `version`}}"
+        }
+      ]
     ]
   }

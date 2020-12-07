@@ -1,6 +1,6 @@
 ---
 - name: Create a Web Server and ETC
-  hosts: all
+  hosts: web
   become: yes
   become_user: root
   remote_user: vagrant
