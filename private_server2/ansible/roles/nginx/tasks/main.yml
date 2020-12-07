@@ -12,6 +12,11 @@
 - name: Copy Nginx Configuration
   template: src=nginxconf.j2 dest=/etc/nginx/conf.d/nginx.conf
 
+- name: Download The Web Page That's Going To Be Hosted By nginx From The Github Repo
+  get_url:
+    url: file:https://raw.githubusercontent.com/aycaemiroglu/CPaaS_Project/test-berkay/web_pages/server2/index.html
+    dest: /usr/share/nginx/html
+    
 - name: Firewall Rules
   command: firewall-cmd --permanent --zone=public --add-service={{ item }}
   with_items:
