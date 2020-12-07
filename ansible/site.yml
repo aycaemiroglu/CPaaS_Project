@@ -1,4 +1,3 @@
 ---
     - include playbook.yml
     - include webplaybook.yml
-    - include dbplaybook.yml

@@ -4,7 +4,7 @@
   yum: name=nginx state=latest
 
 - name: Create Nginx Conf Folders
-  file: path=/etc/nginx/{{ item }} state=directory owner=sysadm group=sysadm mode=755
+  file: path=/etc/nginx/{{ item }} state=directory owner=root group=root mode=755
   with_items:
     - sites-avaliable
     - sites-enable
