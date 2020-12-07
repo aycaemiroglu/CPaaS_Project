@@ -9,4 +9,10 @@
     # - fail2ban
     # - openssl
 - name: EPEL Release adding Source
-  yum: update_cache=yes name=['htop', 'fail2ban', 'openssl'] state=latest
+  yum: 
+    update_cache: yes
+    name: 
+      - htop
+      - fail2ban
+      - openssl
+    state: latest
