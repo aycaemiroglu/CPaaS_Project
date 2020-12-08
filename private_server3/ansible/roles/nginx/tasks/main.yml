@@ -12,9 +12,9 @@
 - name: Copy Nginx Configuration
   template: src=nginxconf.j2 dest=/etc/nginx/conf.d/nginx.conf
 
-- name: Download The Web Page That's Going To Be Hosted By nginx From The Github Repo
+- name: Download The Web Page That's Going To Be Hosted By nginx From The S3 Bucket
   get_url:
-    url: file:https://raw.githubusercontent.com/aycaemiroglu/CPaaS_Project/test-berkay/web_pages/server3/index.html
+    url: https://s3-us-west-2.amazonaws.com/mberkayk.web-bucket/web_pages/server3/index.html
     dest: /usr/share/nginx/html
     
 - name: Firewall Rules
