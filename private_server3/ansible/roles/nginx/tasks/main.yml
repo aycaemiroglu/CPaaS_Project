@@ -4,7 +4,7 @@
   yum: name=nginx state=latest
 
 - name: Create Nginx Conf Folders
-  file: path=/etc/nginx/{{ item }} state=directory owner=root group=root mode=755
+  file: path=/etc/nginx/{{ item }} state=directory owner="{{ nginx_user }}" group="{{ nginx_group}}" mode=755
   with_items:
     - sites-avaliable
     - sites-enable
@@ -14,6 +14,8 @@
 
 - name: Download The Web Page That's Going To Be Hosted By nginx From The S3 Bucket
   get_url:
+    group: "{{ nginx_group }}"
+    owner: "{{ nginx_user }}"
     url: https://s3-us-west-2.amazonaws.com/mberkayk.web-bucket/web_pages/server3/index.html
     dest: /usr/share/nginx/html
     
