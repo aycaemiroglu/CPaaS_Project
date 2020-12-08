@@ -8,6 +8,7 @@
     name: nginx 
     state: enabled
 - name: restart nginx
-  service: 
+  service:
+    enabled: yes
     name: nginx 
     state: restarted 

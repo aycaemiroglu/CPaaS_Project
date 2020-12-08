@@ -9,5 +9,6 @@
     state: enabled
 - name: restart nginx
   service: 
+    enabled: yes
     name: nginx 
     state: restarted 
