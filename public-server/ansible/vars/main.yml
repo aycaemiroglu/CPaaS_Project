@@ -1,0 +1,11 @@
+---
+    # Nginx
+    #project_domain: localhost
+    nginx_group: webapps
+    nginx_user: sysadm
+    
+    #
+    console_user: ansible_user
+    shmmax_percent: 50
+    shmall_percent: 50
+    default_groups: web-admin

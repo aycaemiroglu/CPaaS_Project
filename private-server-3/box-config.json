@@ -1,0 +1,21 @@
+{
+	"builders": [
+
+		{
+      "communicator": "ssh",
+      "source_path": "generic/centos8",
+      "box_version" : "3.1.10",
+      "provider": "virtualbox",
+      "type": "vagrant",
+      "template":"vagrant-template"
+    }
+	],
+
+  "provisioners": [
+  	{
+  	 "type":            "ansible",
+ 	   "playbook_file":   "./ansible/webplaybook.yml",
+ 	   "extra_arguments": ["-vv", "--tags", "nginx, web"]
+  	}  
+  ]	
+}

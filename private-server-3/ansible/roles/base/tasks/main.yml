@@ -1,0 +1,12 @@
+---
+- name: Upgrade Yum
+  yum: update_cache=yes name=* state=latest
+  tags: packages
+- name: EPEL Release adding Source
+  yum: 
+    update_cache: yes
+    name: 
+      - htop
+      - fail2ban
+      - openssl
+    state: latest

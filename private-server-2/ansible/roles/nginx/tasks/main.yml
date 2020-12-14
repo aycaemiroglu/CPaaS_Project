@@ -1,0 +1,29 @@
+---
+
+- name: Install Nginx
+  yum: name=nginx state=latest
+
+- name: Create Nginx Conf Folders
+  file: path=/etc/nginx/{{ item }} state=directory owner="{{ nginx_user }}" group="{{ nginx_group}}" mode=755
+  with_items:
+    - sites-avaliable
+    - sites-enable
+
+- name: Copy Nginx Configuration
+  template: src=nginxconf.j2 dest=/etc/nginx/conf.d/nginx.conf
+
+- name: Download The Web Page That's Going To Be Hosted By nginx From The S3 Bucket
+  get_url:
+    group: "{{ nginx_group }}"
+    owner: "{{ nginx_user }}"
+    url: https://s3-us-west-2.amazonaws.com/mberkayk.web-bucket/web_pages/server2/index.html
+    dest: /usr/share/nginx/html
+        
+- name: Firewall Rules
+  command: firewall-cmd --permanent --zone=public --add-service={{ item }}
+  with_items:
+    - http
+    - https
+  notify:
+    - restart firewall
+    - restart nginx

@@ -1,0 +1,22 @@
+---
+- name: Upgrade Yum
+  yum: update_cache=yes name=* state=latest
+  tags: packages
+# - name: EPEL Release adding Source
+  # yum: update_cache=yes name={{ item }} state=latest
+  # with_items:
+    # - htop
+    # - fail2ban
+    # - openssl
+- name: EPEL Release adding Source
+<<<<<<< HEAD:public-server/ansible/roles/base/tasks/main.yml
+  yum: 
+    update_cache: yes
+    name: 
+      - htop
+      - fail2ban
+      - openssl
+    state: latest
+=======
+  yum: update_cache=yes name=['htop', 'fail2ban', 'openssl'] state=latest
+>>>>>>> parent of 1125389... made some of the changes that were made on private_server files on the public_server as well:public_server/ansible/roles/base/tasks/main.yml
