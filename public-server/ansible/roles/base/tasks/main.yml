@@ -2,12 +2,6 @@
 - name: Upgrade Yum
   yum: update_cache=yes name=* state=latest
   tags: packages
-# - name: EPEL Release adding Source
-  # yum: update_cache=yes name={{ item }} state=latest
-  # with_items:
-    # - htop
-    # - fail2ban
-    # - openssl
 - name: EPEL Release adding Source
   yum: 
     update_cache: yes
@@ -16,5 +10,4 @@
       - fail2ban
       - openssl
     state: latest
-  yum: update_cache=yes name=['htop', 'fail2ban', 'openssl'] state=latest
 
