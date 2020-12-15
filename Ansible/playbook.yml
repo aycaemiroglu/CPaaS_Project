@@ -1,0 +1,17 @@
+---
+
+- name: Build and Deploy All Servers
+  hosts: [localhost]
+  vars_files:
+    - vars.yml
+  tasks:
+  - name: Build the servers
+    shell:
+      cmd: packer build -force box-config.json
+      chdir: "{{ item }}"
+    with_list: "{{ server_paths }}"
+  - name: Run the Vagrant VMs
+    shell:
+      cmd: vagrant up output
+      chdir: "{{ item }}/output-vagrant/"
+    with_list: "{{ server_paths }}"
