@@ -15,8 +15,7 @@
   	{
   	 "type":            "ansible",
  	   "playbook_file":   "./ansible/webplaybook.yml",
- 	   "extra_arguments": ["-vv", "--tags", "nginx, web"],
- 	   "playbook_file":   "./ansible/webplaybook.yml"
+ 	   "extra_arguments": ["-vv", "--tags", "nginx, web"]
   	}  
   ]	
 }
