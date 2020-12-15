@@ -10,8 +10,8 @@
       cmd: packer build -force box-config.json
       chdir: "{{ item }}"
     with_list: "{{ server_paths }}"
-  - name: Run the Vagrant VMs
+  - name: Reload the vagrant boxes and run the vagrant VMs
     shell:
-      cmd: vagrant up output
+      cmd: vagrant box add --force packer_vagrant ./package.box &&  vagrant up output
       chdir: "{{ item }}/output-vagrant/"
     with_list: "{{ server_paths }}"
