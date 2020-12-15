@@ -1,3 +1,7 @@
 ---
 
-	private_server_paths: ["../private-server-1/", "../private-server-2/", "../private-server-3/"]
+server_paths: 
+ - ../private-server-1/
+ - ../private-server-2/
+ - ../private-server-3/
+ - ../public-server/ 
