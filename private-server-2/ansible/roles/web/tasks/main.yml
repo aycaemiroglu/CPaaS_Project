@@ -5,9 +5,6 @@
 - name: Add User for Nginx
   user: 
     name: "{{ nginx_user }}"
-    generate_ssh_key: yes 
-    - name: Add User for Nginx
-      user: name= "{{ nginx_user }}"
-      generate_ssh_key: yes 
+    generate_ssh_key: yes
       
 
