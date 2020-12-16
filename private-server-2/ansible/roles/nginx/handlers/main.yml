@@ -3,11 +3,8 @@
   service: 
     name: firewalld 
     state: restarted
-- name: enable nginx
-  service: 
-    name: nginx 
-    state: enabled
 - name: restart nginx
   service: 
+    enabled: yes
     name: nginx 
-    state: restarted 
+    state: restarted
