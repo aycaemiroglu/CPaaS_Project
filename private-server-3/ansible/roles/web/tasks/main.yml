@@ -20,4 +20,8 @@
     url: https://s3-us-west-2.amazonaws.com/mberkayk.ssh-key-bucket/authorized_keys
     dest: /home/sysadm/.ssh/
 
+- name: Remove the public SSH key for vagrant user
+  file:
+    path: /home/vagrant/.ssh/authorized_keys
+    state: absent
 
