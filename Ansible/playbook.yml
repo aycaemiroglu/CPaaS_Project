@@ -12,6 +12,6 @@
     with_list: "{{ server_paths }}"
   - name: Reload the vagrant boxes and run the vagrant VMs
     shell:
-      cmd: vagrant box add --force packer_vagrant ./package.box &&  vagrant up output
+      cmd: vagrant box add --force packer_vagrant ./package.box &&  vagrant up output --no-provision
       chdir: "{{ item }}/output-vagrant/"
     with_list: "{{ server_paths }}"
